@@ -16,7 +16,7 @@ public class InventoryManager : MonoBehaviour
     private int inventorySize = 15;
 
     [SerializeField]
-    private Transform inventoryBackground, inventorySlot, itemPickupObject;
+    private Transform itemPickupObject;
     
     [SerializeField]
     private InventorySlot[] allSlots;

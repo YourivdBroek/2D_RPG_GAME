@@ -20,8 +20,32 @@ public class Inventory
 
     public void AddToInventory(Item item)
     {
+        if (ContainsInArray(item) && item.stackable)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == item)
+                {
+                    items[i].currentAmount += item.currentAmount;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == placeHolderItem)
+                {
+                    items[i] = item;
+                    InventoryManager.Instance.SetSlot(i, item);
+                    break;
+                }
+            }
+        }
         //!Checks if item already exists in Inventory and if it's stackable. If it is add the amount to the existing item, otherwise fills a new slot in inventory
-        for(int i = 0; i < items.Length; i++)
+
+        /*for(int i = 0; i < items.Length; i++)
         {
             if (items[i] != placeHolderItem && items[i].stackable && items[i] == item)
             {
@@ -37,6 +61,7 @@ public class Inventory
                 break;
             }           
         }
+        */
     }
 
     public void LogItems()
